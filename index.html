@@ -1,0 +1,1512 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Personal website of Asya Saydam, PhD candidate in Sociology at the University of Texas at Austin, studying family, gender and health."
+    />
+    <title>Asya Saydam | Sociology</title>
+    <link rel="icon" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        /* palette */
+        --paper: #faf8ef; /* background */
+        --ink: #16438e; /* main — headings and body text */
+        --muted: #47678f; /* secondary text */
+        --rule: #dbe2ec; /* hairlines */
+        --mark: #167e8e; /* section rules, active nav */
+        --link: #9f2a1e; /* high contrast — links */
+        --focus: #4a82e3; /* secondary — focus rings, hover */
+
+        --display: clamp(2.5rem, 6.5vw, 4rem);
+        --head: 1.375rem;
+        --body: 1.0625rem;
+        --small: 0.8125rem;
+
+        --col: 43rem;
+        --wide: 66rem;
+        --gutter: 1.5rem;
+
+        color-scheme: light;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: var(--body);
+        font-weight: 400;
+        line-height: 1.65;
+        font-variant-numeric: tabular-nums;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      p,
+      ul,
+      dl,
+      dd,
+      dt,
+      figure {
+        margin: 0;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 3px;
+      }
+
+      /* ---------- measure ---------- */
+
+      .col,
+      .wide {
+        width: 100%;
+        margin-inline: auto;
+        padding-inline: var(--gutter);
+      }
+
+      .col {
+        max-width: calc(var(--col) + var(--gutter) * 2);
+      }
+
+      .wide {
+        max-width: calc(var(--wide) + var(--gutter) * 2);
+      }
+
+      .stack > * + * {
+        margin-top: 1rem;
+      }
+
+      /* ---------- shared type ---------- */
+
+      .label {
+        color: var(--muted);
+        font-size: var(--small);
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .lede {
+        color: var(--muted);
+      }
+
+      .note {
+        color: var(--muted);
+        font-size: var(--small);
+        line-height: 1.6;
+      }
+
+      .link {
+        color: var(--link);
+        text-decoration: none;
+        border-bottom: 1px solid currentColor;
+        padding-bottom: 1px;
+      }
+
+      .link:hover {
+        color: var(--ink);
+      }
+
+      /* palette band across the top */
+      .band {
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--ink) 0 25%,
+          var(--focus) 25% 50%,
+          var(--mark) 50% 75%,
+          var(--link) 75% 100%
+        );
+      }
+
+      /* ---------- masthead ---------- */
+
+      .masthead {
+        padding-block: 2.5rem 0;
+      }
+
+      .masthead-inner {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 2rem;
+        align-items: baseline;
+        justify-content: space-between;
+      }
+
+      .name {
+        font-size: var(--small);
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .masthead nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+      }
+
+      .masthead nav a {
+        color: var(--muted);
+        font-size: var(--small);
+        text-decoration: none;
+        padding-bottom: 2px;
+        border-bottom: 1px solid transparent;
+      }
+
+      .masthead nav a:hover {
+        color: var(--link);
+      }
+
+      .masthead nav a[aria-current="page"] {
+        color: var(--ink);
+        border-bottom-width: 2px;
+        border-bottom-color: var(--mark);
+      }
+
+      /* ---------- pages ---------- */
+
+      .page {
+        padding-block: clamp(3.5rem, 10vh, 6rem) 0;
+      }
+
+      .js .page {
+        animation: rise 0.28s ease both;
+      }
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+      }
+
+      .page-head h1 {
+        max-width: 20ch;
+        font-size: var(--display);
+        font-weight: 400;
+        line-height: 1.06;
+        letter-spacing: -0.035em;
+        text-wrap: balance;
+      }
+
+      .page-head .label {
+        display: block;
+        margin-bottom: 1rem;
+      }
+
+      .page-head .label::before,
+      .block-head::before {
+        display: inline-block;
+        width: 0.5rem;
+        height: 0.5rem;
+        margin-right: 0.6rem;
+        background: var(--mark);
+        content: "";
+      }
+
+      .page-head .lede {
+        margin-top: 1.75rem;
+      }
+
+      .block {
+        margin-top: clamp(3.5rem, 9vh, 5.5rem);
+      }
+
+      .block-head {
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid var(--mark);
+      }
+
+      .block-head + * {
+        margin-top: 2.25rem;
+      }
+
+      .sub-head {
+        margin-top: 2.75rem;
+        margin-bottom: 0.5rem;
+        font-size: var(--body);
+        font-weight: 500;
+      }
+
+      /* ---------- home ---------- */
+
+      .bio {
+        display: grid;
+        grid-template-columns: 16rem 1fr;
+        gap: 2.5rem;
+        align-items: start;
+        margin-top: clamp(2.5rem, 7vh, 4rem);
+      }
+
+      .bio img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .bio p + p {
+        margin-top: 1rem;
+      }
+
+      .bio-more {
+        margin-top: 1.75rem;
+      }
+
+      .keywords {
+        margin-top: 2.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--rule);
+        color: var(--muted);
+        font-size: var(--small);
+        letter-spacing: 0.04em;
+      }
+
+      /* ---------- focus list ---------- */
+
+      .focus dt {
+        font-weight: 500;
+      }
+
+      .focus dd {
+        margin: 0.4rem 0 0;
+        color: var(--muted);
+      }
+
+      .focus > div + div {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--rule);
+      }
+
+      /* ---------- studies ---------- */
+
+      .study + .study {
+        margin-top: clamp(2.5rem, 7vh, 3.75rem);
+      }
+
+      .study-index {
+        display: block;
+        margin-bottom: 0.875rem;
+      }
+
+      .study h3 {
+        max-width: 40ch;
+        font-size: var(--head);
+        font-weight: 400;
+        letter-spacing: -0.015em;
+        text-wrap: balance;
+      }
+
+      .study p {
+        margin-top: 1rem;
+      }
+
+      /* ---------- citations ---------- */
+
+      .cites {
+        padding: 0;
+        list-style: none;
+      }
+
+      .cite {
+        padding-block: 1.4rem;
+      }
+
+      .cite + .cite {
+        border-top: 1px solid var(--rule);
+      }
+
+      .cite:last-child {
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .cite-title {
+        font-size: var(--body);
+        font-weight: 500;
+        text-wrap: pretty;
+      }
+
+      .cite-authors {
+        margin-top: 0.35rem;
+        color: var(--muted);
+      }
+
+      .cite-venue {
+        margin-top: 0.15rem;
+        color: var(--muted);
+        font-size: var(--small);
+      }
+
+      .cite-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.25rem;
+        margin-top: 0.7rem;
+      }
+
+      .cite-award {
+        margin-top: 0.6rem;
+        font-size: var(--small);
+      }
+
+      .cite-award::before {
+        display: inline-block;
+        width: 0.4rem;
+        height: 0.4rem;
+        margin-right: 0.5rem;
+        background: var(--mark);
+        vertical-align: 0.12em;
+        content: "";
+      }
+
+      .talks .cite-venue {
+        margin-top: 0.35rem;
+      }
+
+      /* ---------- cv ---------- */
+
+      .cv-download {
+        margin-top: 2.25rem;
+      }
+
+      .cv-block h3 {
+        margin-bottom: 1.25rem;
+        font-size: var(--body);
+        font-weight: 500;
+      }
+
+      .cv-block + .cv-block {
+        margin-top: 3.25rem;
+      }
+
+      .entry {
+        display: grid;
+        grid-template-columns: 11rem 1fr;
+        gap: 0.25rem 2rem;
+        padding-block: 1.125rem;
+        border-top: 1px solid var(--rule);
+      }
+
+      .entry:last-child {
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .entry .date {
+        color: var(--muted);
+        font-size: var(--small);
+        line-height: 1.9;
+      }
+
+      .entry h4 {
+        font-size: var(--body);
+        font-weight: 500;
+      }
+
+      .entry p {
+        color: var(--muted);
+      }
+
+      .entry .detail {
+        margin-top: 0.35rem;
+        font-size: var(--small);
+        line-height: 1.6;
+      }
+
+      .traits {
+        margin: 0;
+      }
+
+      .traits > div {
+        display: grid;
+        grid-template-columns: 15rem 1fr;
+        gap: 0.25rem 2rem;
+        padding-block: 0.8rem;
+        border-top: 1px solid var(--rule);
+      }
+
+      .traits > div:last-child {
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .traits dt {
+        font-weight: 500;
+      }
+
+      .traits dd {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .interests {
+        margin-top: 1.5rem;
+        color: var(--muted);
+      }
+
+      /* ---------- link list ---------- */
+
+      .rows {
+        padding: 0;
+        list-style: none;
+      }
+
+      .rows li + li {
+        border-top: 1px solid var(--rule);
+      }
+
+      .rows li:last-child {
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .rows a {
+        display: grid;
+        grid-template-columns: 11rem 1fr;
+        gap: 0.25rem 2rem;
+        padding: 1.125rem 0.75rem;
+        margin-inline: -0.75rem;
+        text-decoration: none;
+      }
+
+      .rows a:hover {
+        background: color-mix(in srgb, var(--mark) 8%, transparent);
+      }
+
+      .rows-value {
+        color: var(--link);
+        overflow-wrap: anywhere;
+      }
+
+      .rows a:hover .rows-value {
+        color: var(--ink);
+      }
+
+      .rows .label {
+        line-height: 1.9;
+      }
+
+      .rows-note {
+        display: block;
+        margin-top: 0.125rem;
+        color: var(--muted);
+        font-size: var(--small);
+      }
+
+      /* ---------- footer ---------- */
+
+      footer {
+        margin-top: clamp(4rem, 10vh, 6rem);
+        padding-block: 2rem 3.5rem;
+      }
+
+      footer p {
+        color: var(--muted);
+        font-size: var(--small);
+      }
+
+      /* ---------- narrow ---------- */
+
+      @media (max-width: 36rem) {
+        .bio {
+          grid-template-columns: 1fr;
+          gap: 1.75rem;
+        }
+
+        .bio-photo {
+          max-width: 11rem;
+        }
+
+        .entry,
+        .rows a,
+        .traits > div {
+          grid-template-columns: 1fr;
+          gap: 0.375rem;
+        }
+
+        .entry .date,
+        .rows .label {
+          line-height: 1.6;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .js .page {
+          animation: none;
+        }
+      }
+
+      @media print {
+        :root {
+          --paper: #fff;
+        }
+
+        .band,
+        .masthead nav {
+          display: none;
+        }
+
+        .page[hidden] {
+          display: block !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+
+    <div class="band" aria-hidden="true"></div>
+
+    <header class="masthead">
+      <div class="col masthead-inner">
+        <a class="name" href="#home">Asya Saydam</a>
+        <nav id="nav" aria-label="Sections">
+          <a href="#home">Home</a>
+          <a href="#research">Research</a>
+          <a href="#publications">Publications</a>
+          <a href="#cv">CV</a>
+          <a href="#links">Links</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ============ HOME ============ -->
+      <section class="page" id="home" data-title="Asya Saydam | Sociology">
+        <div class="col page-head">
+          <span class="label">PhD Candidate in Sociology</span>
+          <h1>Counting on each other.</h1>
+        </div>
+
+        <div class="col bio">
+          <div class="bio-photo">
+            <img src="portrait.jpg" alt="Portrait of Asya Saydam" />
+          </div>
+          <div class="bio-text">
+            <p>
+              I am a final-year PhD candidate in sociology at the University of Texas at Austin, where I also hold
+              a Certificate in Demography.
+            </p>
+            <p>
+              My research asks how couples come to rely on one another as they divide earning, housework and care,
+              and what that reliance does to health and marital quality. I compare same-sex and different-sex
+              marriages using dyadic couple data, where both spouses report on the same household.
+            </p>
+            <p>
+              Before Austin I completed an MA in Modern Turkish History and a BA in Economics at Boğaziçi
+              University in Istanbul, and spent four years doing social impact research in the Turkish
+              non-profit and corporate sector.
+            </p>
+            <p class="bio-more">
+              <a class="link" href="#research">Read the research</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="col">
+          <p class="keywords">
+            Family · Gender &amp; Sexuality · Health · Social Demography · Intimate Relationships
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ RESEARCH ============ -->
+      <section class="page" id="research" data-title="Research | Asya Saydam">
+        <div class="col page-head">
+          <span class="label">Research</span>
+          <h1>The dependence couples don't discuss.</h1>
+          <p class="lede">
+            I study the everyday arrangements inside households — who earns, who keeps the ledger, who does the
+            laundry, who sleeps badly — and trace how those arrangements shape health and marital quality.
+          </p>
+        </div>
+
+        <div class="col block">
+          <p class="label block-head">Dissertation</p>
+          <div class="stack">
+            <p>
+              <em>Counting on Each Other: Tacit Dependence and the Organization of Household Life.</em>
+              Co-chaired by Shannon Cavanagh and Debra Umberson.
+            </p>
+            <p>
+              The dissertation develops the concept of <strong>tacit dependence</strong>: the practical, largely
+              unspoken reliance partners build on one another as they divide earning, household work and the
+              administrative labour of running a home. Dependence of this kind is rarely negotiated out loud, and
+              rarely measured — but it shapes how a marriage is experienced.
+            </p>
+            <p>
+              I examine it across same-sex and different-sex marriages using dyadic data, where both partners
+              report on the same household. That design makes agreement and disagreement between spouses part of
+              the evidence rather than noise, and it lets comparison across couple types show which arrangements
+              follow from gender and which follow from the division of labour itself.
+            </p>
+          </div>
+        </div>
+
+        <div class="col block">
+          <p class="label block-head">Focus areas</p>
+          <dl class="focus">
+            <div>
+              <dt>Family</dt>
+              <dd>
+                How couples organise money, housework and care between them, and how those divisions shift as
+                relationships and households change.
+              </dd>
+            </div>
+            <div>
+              <dt>Gender and sexuality</dt>
+              <dd>
+                What comparing same-sex with different-sex marriages reveals about arrangements that otherwise
+                look natural, and about the work gender does inside a household.
+              </dd>
+            </div>
+            <div>
+              <dt>Health</dt>
+              <dd>
+                The health consequences of domestic life — sleep quality, depressive symptoms, and the strain that
+                accumulates from unequal divisions of work.
+              </dd>
+            </div>
+            <div>
+              <dt>Social demography</dt>
+              <dd>
+                Population-level patterns in family formation, coresidence and the transition to adulthood, using
+                large-scale survey, dyadic and birth cohort data.
+              </dd>
+            </div>
+            <div>
+              <dt>Intimate relationships</dt>
+              <dd>
+                How partners negotiate commitment, support and its limits — including in marriages that fall
+                outside the monogamous template.
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="col block">
+          <p class="label block-head">Work in progress</p>
+
+          <article class="study">
+            <span class="label study-index">01 &nbsp;/&nbsp; In preparation</span>
+            <h3>Keeping the ledger, doing the laundry</h3>
+            <p>
+              How relative earnings translate into who manages a household's money and paperwork and who does its
+              physical work, and whether that translation runs differently in same-sex and different-sex
+              marriages. Honorable mention for the Norval Glenn Prize, 2026.
+            </p>
+          </article>
+
+          <article class="study">
+            <span class="label study-index">02 &nbsp;/&nbsp; Manuscript available</span>
+            <h3>Counting on a spouse</h3>
+            <p>
+              Tacit dependence across household domains and marital quality — whether what matters for a marriage
+              is less the division of labour itself than how dependent each partner understands themselves to be.
+            </p>
+          </article>
+
+          <article class="study">
+            <span class="label study-index">03 &nbsp;/&nbsp; In progress</span>
+            <h3>The sleep cost of housework</h3>
+            <p>
+              Nationally representative evidence on how housework loads translate into lost sleep, compared across
+              same-sex and different-sex couples in the United States.
+            </p>
+          </article>
+
+          <p class="note" style="margin-top: 2.5rem">
+            Three further collaborative papers — on financial stress and depressive symptoms, on consensual
+            non-monogamy among bi+ adults, and on mental health in sexual and gender diverse long-term marriages —
+            are listed on the <a class="link" href="#publications">publications page</a>.
+          </p>
+        </div>
+
+        <div class="col block">
+          <p class="label block-head">Data and methods</p>
+          <div class="stack">
+            <p>
+              Most of my work uses the Health and Relationships Project (HARP), a dyadic study of same-sex and
+              different-sex married couples, where I managed key components of Wave 3 — survey implementation,
+              participant retention, dyadic diary coordination and in-depth interviews with long-term bi+ couples.
+            </p>
+            <p>
+              Earlier projects drew on birth cohort studies across three countries — ECLS-B in the United States,
+              the Millennium Cohort Study in the United Kingdom, and LSAC in Australia — to follow maternal
+              depression across early childhood. I work in Stata, R, Mplus and NVivo, across both survey and
+              interview data.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PUBLICATIONS ============ -->
+      <section class="page" id="publications" data-title="Publications | Asya Saydam">
+        <div class="col page-head">
+          <span class="label">Publications</span>
+          <h1>Papers, essays and talks.</h1>
+          <p class="lede">
+            Peer-reviewed articles, working papers, public writing in English and Turkish, and selected conference
+            presentations.
+          </p>
+        </div>
+
+        <div class="col block">
+          <p class="label block-head">Peer-reviewed articles</p>
+          <ul class="cites">
+            <li class="cite">
+              <p class="cite-title">
+                Sleep tight, don't fight? Daily sleep quality and marital strain in same- and different-sex
+                marriages in the United States
+              </p>
+              <p class="cite-authors"><strong>Saydam, A.</strong> and J. Hsu. 2026.</p>
+              <p class="cite-venue"><em>Journal of Health and Social Behavior</em>, online first.</p>
+              <p class="cite-links">
+                <a class="link" href="https://doi.org/10.1177/00221465261438048" target="_blank" rel="noopener"
+                  >Article</a
+                >
+                <a
+                  class="link"
+                  href="https://www.psypost.org/poor-sleep-quality-predicts-marital-strain-especially-for-women-married-to-men"
+                  target="_blank"
+                  rel="noopener"
+                  >Press coverage</a
+                >
+              </p>
+            </li>
+            <li class="cite">
+              <p class="cite-title">
+                Maternal depression across early childhood: similarities and differences across three liberal
+                democracies
+              </p>
+              <p class="cite-authors">Cavanagh, S. and <strong>A. Saydam</strong>. 2025.</p>
+              <p class="cite-venue"><em>Journal of Health and Social Behavior</em>, online first.</p>
+              <p class="cite-links">
+                <a
+                  class="link"
+                  href="https://journals.sagepub.com/doi/10.1177/00221465251395988"
+                  target="_blank"
+                  rel="noopener"
+                  >Article</a
+                >
+                <a
+                  class="link"
+                  href="https://contemporaryfamilies.utah.edu/publications/posts/2025/october/depression-recovery-brief-report.php/"
+                  target="_blank"
+                  rel="noopener"
+                  >Brief report</a
+                >
+              </p>
+            </li>
+            <li class="cite">
+              <p class="cite-title">
+                Slow to launch: young men's parental coresidence and employment outcomes
+              </p>
+              <p class="cite-authors"><strong>Saydam, A.</strong> and K. Raley. 2024.</p>
+              <p class="cite-venue"><em>Journal of Marriage and Family</em> 86(4): 1009–33.</p>
+              <p class="cite-award">
+                W. Parker Frisbie Outstanding Publication Award, Population Research Center, UT Austin, 2024
+              </p>
+              <p class="cite-links">
+                <a class="link" href="https://doi.org/10.1111/jomf.13001" target="_blank" rel="noopener">Article</a>
+                <a
+                  class="link"
+                  href="https://thesocietypages.org/ccf/2024/06/25/slow-to-launch-adult-children-living-with-their-parents-and-employment-outcomes/"
+                  target="_blank"
+                  rel="noopener"
+                  >Plain-language summary</a
+                >
+              </p>
+            </li>
+            <li class="cite">
+              <p class="cite-title">The incompatibility of pension system and the labour market in Turkey</p>
+              <p class="cite-authors"><strong>Saydam, A.</strong> 2018.</p>
+              <p class="cite-venue"><em>Journal of Balkan and Near Eastern Studies</em> 20(4): 332–48.</p>
+              <p class="cite-links">
+                <a class="link" href="https://doi.org/10.1080/19448953.2018.1385285" target="_blank" rel="noopener"
+                  >Article</a
+                >
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col block">
+          <p class="label block-head">Selected working papers</p>
+          <ul class="cites">
+            <li class="cite">
+              <p class="cite-title">
+                Keeping the ledger, doing the laundry: tacit dependence and relative earnings in same- and
+                different-sex marriages
+              </p>
+              <p class="cite-authors"><strong>Saydam, A.</strong></p>
+              <p class="cite-venue">In preparation for submission.</p>
+              <p class="cite-award">
+                Honorable Mention, Norval Glenn Prize, Department of Sociology, UT Austin, 2026
+              </p>
+            </li>
+            <li class="cite">
+              <p class="cite-title">
+                Counting on a spouse: tacit dependence across household domains and marital quality in same- and
+                different-sex couples
+              </p>
+              <p class="cite-authors"><strong>Saydam, A.</strong></p>
+              <p class="cite-venue">Manuscript available.</p>
+            </li>
+            <li class="cite">
+              <p class="cite-title">
+                The sleep cost of housework: nationally representative evidence from same- and different-sex
+                couples in the United States
+              </p>
+              <p class="cite-authors"><strong>Saydam, A.</strong></p>
+              <p class="cite-venue">In progress.</p>
+            </li>
+            <li class="cite">
+              <p class="cite-title">
+                Financial stress, social support, and depressive symptoms in same-sex and different-sex marriages
+              </p>
+              <p class="cite-authors">Hsu, J. and <strong>A. Saydam</strong>.</p>
+              <p class="cite-venue">Manuscript available.</p>
+            </li>
+            <li class="cite">
+              <p class="cite-title">
+                Beyond happily ever after: dyadic negotiations of consensual non-monogamy among bi+ adults in the
+                United States
+              </p>
+              <p class="cite-authors">
+                Mueller, K., <strong>A. Saydam</strong>, R. Reczek and M. B. Thomeer.
+              </p>
+              <p class="cite-venue">Manuscript available.</p>
+            </li>
+            <li class="cite">
+              <p class="cite-title">
+                Mental health experiences within sexual and gender diverse long-term marriages
+              </p>
+              <p class="cite-authors">
+                Thomeer, M. B., H. Lindl, R. Reczek, K. Mueller and <strong>A. Saydam</strong>.
+              </p>
+              <p class="cite-venue">In progress.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col block">
+          <p class="label block-head">Public scholarship and media</p>
+
+          <ul class="cites">
+            <li class="cite">
+              <p class="cite-title">
+                Poor sleep quality predicts marital strain, especially for women married to men
+              </p>
+              <p class="cite-authors">Dolan, E. W. 2026. Research featured in <em>PsyPost</em>, 2 June.</p>
+              <p class="cite-links">
+                <a
+                  class="link"
+                  href="https://www.psypost.org/poor-sleep-quality-predicts-marital-strain-especially-for-women-married-to-men"
+                  target="_blank"
+                  rel="noopener"
+                  >Coverage</a
+                >
+              </p>
+            </li>
+            <li class="cite">
+              <p class="cite-title">
+                More than postpartum: tracking differences in the arc of maternal depression across liberal
+                welfare regimes
+              </p>
+              <p class="cite-authors"><strong>Saydam, A.</strong> and S. Cavanagh.</p>
+              <p class="cite-venue">Council on Contemporary Families, December 2025.</p>
+              <p class="cite-links">
+                <a
+                  class="link"
+                  href="https://contemporaryfamilies.utah.edu/publications/posts/2025/october/depression-recovery-brief-report.php/"
+                  target="_blank"
+                  rel="noopener"
+                  >Brief report</a
+                >
+              </p>
+            </li>
+            <li class="cite">
+              <p class="cite-title">
+                Slow to launch: adult children living with their parents and employment outcomes
+              </p>
+              <p class="cite-authors"><strong>Saydam, A.</strong></p>
+              <p class="cite-venue">The Society Pages, June 2024.</p>
+              <p class="cite-links">
+                <a
+                  class="link"
+                  href="https://thesocietypages.org/ccf/2024/06/25/slow-to-launch-adult-children-living-with-their-parents-and-employment-outcomes/"
+                  target="_blank"
+                  rel="noopener"
+                  >Essay</a
+                >
+              </p>
+            </li>
+          </ul>
+
+          <h3 class="sub-head">Articles in Turkish</h3>
+          <ul class="cites">
+            <li class="cite">
+              <p class="cite-title">
+                Artan baskılar ve kaçınılmaz dönüşümler: gençlerin yaşayış biçimleri bizi neden ilgilendiriyor?
+              </p>
+              <p class="cite-authors"><strong>Saydam, A.</strong></p>
+              <p class="cite-venue">
+                <em>Birikim</em>, January 2021. Increasing pressures and inevitable transformations: why do we care
+                about young people's living arrangements?
+              </p>
+              <p class="cite-links">
+                <a
+                  class="link"
+                  href="https://birikimdergisi.com/guncel/10441/artan-baskilar-ve-kacinilmaz-donusumler-genclerin-yasayis-bicimleri-bizi-neden-ilgilendiriyor"
+                  target="_blank"
+                  rel="noopener"
+                  >Essay</a
+                >
+              </p>
+            </li>
+            <li class="cite">
+              <p class="cite-title">
+                Demografik, sosyal ve politik dönüşümler ekseninde Türkiye'de aile ve ailecilik yazını
+              </p>
+              <p class="cite-authors"><strong>Saydam, A.</strong> and E. Çelebi.</p>
+              <p class="cite-venue">
+                <em>Birikim</em>, vol. 387–388, August 2021. Family and familialism literature in Turkey in the
+                context of demographic, social and political change.
+              </p>
+            </li>
+            <li class="cite">
+              <p class="cite-title">
+                Olağan yaşlılar: yerli dizilerdeki yaşlı karakterlere ilişkin seyirci algısı
+              </p>
+              <p class="cite-authors"><strong>Saydam, A.</strong> and E. Çelebi.</p>
+              <p class="cite-venue">
+                <em>Birikim</em>, vol. 362, July–August 2019. Gendered media representations of elderly characters
+                in Turkish TV series.
+              </p>
+            </li>
+          </ul>
+
+          <h3 class="sub-head">Edited book chapters</h3>
+          <ul class="cites">
+            <li class="cite">
+              <p class="cite-title">
+                Kent ve kır arasında bağ kurmak: Boğaziçi Mensupları Tüketim Kooperatifi (Bükoop) deneyimi
+              </p>
+              <p class="cite-authors"><strong>Saydam, A.</strong> and Z. Kadirbeyoğlu.</p>
+              <p class="cite-venue">
+                In <em>Şehrin Doğası</em>, eds. A. Bartu Candan, C. Kafadar, S. Kafadar and Ç. Kafescioğlu.
+                Istanbul: Metis, forthcoming 2026. In Turkish. Reconnecting the urban and the rural: an
+                alternative food network in the Boğaziçi consumption cooperative.
+              </p>
+            </li>
+            <li class="cite">
+              <p class="cite-title">
+                Türkiye'de değişen emeklilik biçimleri: karşılaştırmalı bir perspektiften metal sanayi ve belediye
+                sektörü işçileri
+              </p>
+              <p class="cite-authors"><strong>Saydam, A.</strong></p>
+              <p class="cite-venue">
+                In <em>Piyasa Hakimiyetinde Sağlık ve Sosyal Güvenlik</em>, ed. G. Yaşar. NotaBene, May 2017. In
+                Turkish. Changing retirement patterns in Turkey: metal industry and municipal sector workers in
+                comparative perspective.
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col block">
+          <p class="label block-head">Selected conference presentations</p>
+          <ul class="cites talks">
+            <li class="cite">
+              <p class="cite-title">
+                Airing the household's dirty laundry: tacit dependence and relative earnings in same- and
+                different-sex marriages
+              </p>
+              <p class="cite-venue">Poster · Work and Family Researchers Network, Montreal, 2026</p>
+            </li>
+            <li class="cite">
+              <p class="cite-title">
+                The sleep cost of housework: a comparison of same-sex and different-sex relationships in the United
+                States
+              </p>
+              <p class="cite-venue">Poster · Population Association of America, St. Louis, 2026</p>
+            </li>
+            <li class="cite">
+              <p class="cite-title">
+                Sleep tight, don't fight? Daily sleep health and marital strain in same- and different-sex
+                marriages in the United States
+              </p>
+              <p class="cite-venue">Paper · Population Association of America, Washington DC, 2025</p>
+            </li>
+            <li class="cite">
+              <p class="cite-title">
+                Changes in physical health and housework stress in midlife married couples: same-sex and
+                different-sex unions
+              </p>
+              <p class="cite-venue">Paper · American Sociological Association, Montreal, 2024</p>
+            </li>
+            <li class="cite">
+              <p class="cite-title">
+                Household work and marital quality: exploring perceptions of dependence in same-sex and
+                different-sex marriages
+              </p>
+              <p class="cite-venue">
+                Paper · European Population Conference, Edinburgh, 2024<br />
+                Poster · Population Association of America, Columbus, 2024
+              </p>
+            </li>
+            <li class="cite">
+              <p class="cite-title">
+                Maternal depression across early childhood: similarities and differences across three liberal
+                democracies
+              </p>
+              <p class="cite-venue">Paper · American Sociological Association, Philadelphia, 2023</p>
+            </li>
+            <li class="cite">
+              <p class="cite-title">
+                Slow to launch: the association between young men's coresidence with parents and employment
+                outcomes in their early thirties
+              </p>
+              <p class="cite-venue">
+                Paper · Population Association of America, New Orleans, 2023<br />
+                Paper · Society for the Advancement of Socio-Economics, Amsterdam, 2022
+              </p>
+            </li>
+            <li class="cite">
+              <p class="cite-title">
+                The 21st-century phenomenon of household arrangement: solo living experiences in Turkey
+              </p>
+              <p class="cite-venue">
+                Paper · Einstein Open Colloquium, Critical Turkey Studies, Berlin, 2020
+              </p>
+            </li>
+            <li class="cite">
+              <p class="cite-title">
+                Changing retirement patterns in Turkey: municipal and metal-sector workers
+              </p>
+              <p class="cite-venue">
+                Paper · Society for the Advancement of Socio-Economics, Berkeley, 2016
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ CV ============ -->
+      <section class="page" id="cv" data-title="CV | Asya Saydam">
+        <div class="col page-head">
+          <span class="label">Curriculum vitae</span>
+          <h1>Sociology, demography, health.</h1>
+          <p class="lede">
+            A summary below. The full CV — including professional development, complete service record and
+            references — is in the PDF.
+          </p>
+          <p class="cv-download">
+            <a class="link" href="cv/Saydam-CV.pdf" target="_blank" rel="noopener">Download full CV (PDF)</a>
+          </p>
+        </div>
+
+        <div class="col block">
+          <div class="cv-block">
+            <h3>Education</h3>
+            <div class="entry">
+              <p class="date">Expected 2027</p>
+              <div>
+                <h4>PhD Sociology</h4>
+                <p>University of Texas at Austin · Certificate in Demography</p>
+                <p class="detail">
+                  Dissertation: <em>Counting on Each Other: Tacit Dependence and the Organization of Household
+                  Life</em>. Co-chairs: Shannon Cavanagh and Debra Umberson.
+                </p>
+              </div>
+            </div>
+            <div class="entry">
+              <p class="date">2015</p>
+              <div>
+                <h4>MA Modern Turkish History</h4>
+                <p>Boğaziçi University, Istanbul</p>
+                <p class="detail">
+                  Thesis: <em>Changing Retirement Patterns in Turkey: A Comparative Study of Metal and Municipal
+                  Sector Workers</em>. Advisor: Ayşe Buğra.
+                </p>
+              </div>
+            </div>
+            <div class="entry">
+              <p class="date">2013</p>
+              <div>
+                <h4>BA Economics</h4>
+                <p>Boğaziçi University, Istanbul</p>
+                <p class="detail">Erasmus programme, Corvinus University, Budapest, spring 2012.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cv-block">
+            <h3>Teaching</h3>
+            <div class="entry">
+              <p class="date">Fall 2026</p>
+              <div>
+                <h4>Global Health Issues and Systems</h4>
+                <p>Instructor of Record · UT Austin, Department of Sociology</p>
+              </div>
+            </div>
+            <div class="entry">
+              <p class="date">Fall 2025</p>
+              <div>
+                <h4>Health and Society</h4>
+                <p>Instructor of Record · Texas Prison Education Initiative</p>
+              </div>
+            </div>
+            <div class="entry">
+              <p class="date">Fall 2025</p>
+              <div>
+                <h4>The Sociology of Health and Well-Being</h4>
+                <p>Guest lecturer · "Systems of Healthcare Around the World"</p>
+              </div>
+            </div>
+            <div class="entry">
+              <p class="date">2020 – 2023</p>
+              <div>
+                <h4>Teaching Assistant</h4>
+                <p>
+                  UT Austin · Fertility and Reproduction · Introduction to Social Statistics · Social Research
+                  Methods · Introduction to the Study of Society · Health and Society
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cv-block">
+            <h3>Research experience</h3>
+            <div class="entry">
+              <p class="date">2023 – 2025</p>
+              <div>
+                <h4>Health and Relationships Project</h4>
+                <p>Graduate Research Assistant · Population Research Center, UT Austin</p>
+                <p class="detail">
+                  NIH-funded, PI Debra Umberson. Managed key components of HARP Wave 3: survey implementation,
+                  participant retention, dyadic diary coordination, data management, and in-depth interviews with
+                  long-term bi+ couples.
+                </p>
+              </div>
+            </div>
+            <div class="entry">
+              <p class="date">2021 – 2023</p>
+              <div>
+                <h4>Fertility Trends, Changing Maternal Characteristics and Child Health</h4>
+                <p>Research Assistant · Population Research Center, UT Austin</p>
+                <p class="detail">
+                  NIH-funded, PI Shannon Cavanagh. Longitudinal analyses using US (ECLS-B), UK (MCS) and
+                  Australian (LSAC) birth cohort studies.
+                </p>
+              </div>
+            </div>
+            <div class="entry">
+              <p class="date">Summer 2023</p>
+              <div>
+                <h4>Work-Family Amenities and Women's Job Choices</h4>
+                <p>Research Assistant · Population Research Center, UT Austin · PI Jennifer Glass</p>
+              </div>
+            </div>
+            <div class="entry">
+              <p class="date">2014 – 2017</p>
+              <div>
+                <h4>Social Policy Forum · Development and International Economics</h4>
+                <p>Research Assistant · Boğaziçi University and Marmara University, Turkey</p>
+                <p class="detail">
+                  Comparative social policy research, labour-market analysis, and qualitative research on
+                  retirement systems in Turkey. PI Ayşe Buğra.
+                </p>
+              </div>
+            </div>
+            <div class="entry">
+              <p class="date">2017 – 2020</p>
+              <div>
+                <h4>Research and Analytics Team Member</h4>
+                <p>S360 Sustainability and Communication Services, Istanbul</p>
+                <p class="detail">
+                  Social impact evaluations, stakeholder interviews and focus groups; developed Theory of Change
+                  and Social Return on Investment frameworks for NGOs, social enterprises and corporate partners.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cv-block">
+            <h3>Selected fellowships, honours and awards</h3>
+            <div class="entry">
+              <p class="date">2026</p>
+              <div>
+                <h4>Norval Glenn Prize, Honorable Mention</h4>
+                <p>Department of Sociology, UT Austin</p>
+              </div>
+            </div>
+            <div class="entry">
+              <p class="date">2025 – 2026</p>
+              <div>
+                <h4>University Graduate Continuing Fellowship</h4>
+                <p>UT Austin</p>
+              </div>
+            </div>
+            <div class="entry">
+              <p class="date">2025 – 2026</p>
+              <div>
+                <h4>Equality Leaders Program Fellowship</h4>
+                <p>Texas</p>
+              </div>
+            </div>
+            <div class="entry">
+              <p class="date">2025</p>
+              <div>
+                <h4>Summer Writing Fellowship · William Powers Jr. Endowed Scholarship</h4>
+                <p>UT Austin</p>
+              </div>
+            </div>
+            <div class="entry">
+              <p class="date">2024</p>
+              <div>
+                <h4>W. Parker Frisbie Publication Award</h4>
+                <p>Population Research Center, UT Austin</p>
+              </div>
+            </div>
+            <div class="entry">
+              <p class="date">2022</p>
+              <div>
+                <h4>Distinction on comprehensive examinations</h4>
+                <p>Demography and family sociology, UT Austin</p>
+              </div>
+            </div>
+            <div class="entry">
+              <p class="date">2021 – 2022</p>
+              <div>
+                <h4>Pre-Dissertation Summer Fellowship</h4>
+                <p>Department of Sociology, UT Austin</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cv-block">
+            <h3>Selected service</h3>
+            <div class="entry">
+              <p class="date">2024 – present</p>
+              <div>
+                <h4>Ad hoc reviewer</h4>
+                <p><em>American Journal of Sociology</em> · <em>Journal of Social Policy</em> · <em>Sociology Lens</em></p>
+              </div>
+            </div>
+            <div class="entry">
+              <p class="date">2021 – 2025</p>
+              <div>
+                <h4>Social Media Manager</h4>
+                <p>Council on Contemporary Families · Population Research Center, UT Austin</p>
+              </div>
+            </div>
+            <div class="entry">
+              <p class="date">2023 – 2025</p>
+              <div>
+                <h4>Program Coordinator, Refugee Student Mentor Program</h4>
+                <p>Center for Middle Eastern Studies, UT Austin</p>
+                <p class="detail">
+                  Coordinated a mentoring programme connecting more than 100 university students with refugee
+                  youth.
+                </p>
+              </div>
+            </div>
+            <div class="entry">
+              <p class="date">2023</p>
+              <div>
+                <h4>Poster Selection Committee</h4>
+                <p>Population Association of America annual meeting</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col block">
+          <p class="label block-head">Languages</p>
+          <dl class="traits">
+            <div>
+              <dt>Turkish</dt>
+              <dd>Native</dd>
+            </div>
+            <div>
+              <dt>English</dt>
+              <dd>Fluent</dd>
+            </div>
+            <div>
+              <dt>Spanish and French</dt>
+              <dd>Beginner</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="col block">
+          <p class="label block-head">Software</p>
+          <p class="interests">Stata · R · Mplus · NVivo · Qualtrics</p>
+        </div>
+
+        <div class="col block">
+          <p class="label block-head">Professional associations</p>
+          <p class="interests">
+            Population Association of America · American Sociological Association · Sociologists for Women in
+            Society · Society for the Advancement of Socio-Economics
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ LINKS ============ -->
+      <section class="page" id="links" data-title="Links | Asya Saydam">
+        <div class="col page-head">
+          <span class="label">Elsewhere</span>
+          <h1>Get in touch.</h1>
+          <p class="lede">
+            Always glad to hear from people working on families, gender, health and intimate relationships.
+          </p>
+        </div>
+
+        <div class="col block">
+          <p class="label block-head">Email</p>
+          <ul class="rows">
+            <li>
+              <a href="mailto:asyasaydam@utexas.edu">
+                <span class="label">Academic</span>
+                <span class="rows-value">asyasaydam@utexas.edu</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col block">
+          <p class="label block-head">Profiles</p>
+          <ul class="rows">
+            <li>
+              <a
+                href="https://scholar.google.com/citations?hl=en&amp;user=FNZ_buwAAAAJ&amp;view_op=list_works&amp;sortby=pubdate"
+                target="_blank"
+                rel="me noopener"
+              >
+                <span class="label">Google Scholar</span>
+                <span class="rows-value">
+                  scholar.google.com
+                  <span class="rows-note">Publications and citations.</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/asya-saydam" target="_blank" rel="me noopener">
+                <span class="label">LinkedIn</span>
+                <span class="rows-value">
+                  in/asya-saydam
+                  <span class="rows-note">Professional profile and updates.</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/asyasaydam" target="_blank" rel="me noopener">
+                <span class="label">GitHub</span>
+                <span class="rows-value">
+                  github.com/asyasaydam
+                  <span class="rows-note">Analysis code and replication material.</span>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col block">
+          <p class="label block-head">Affiliation</p>
+          <p class="interests">
+            Department of Sociology and Population Research Center<br />
+            University of Texas at Austin
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="col">
+        <p>University of Texas at Austin · Population Research Center</p>
+        <p>© 2026 Asya Saydam</p>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var pages = Array.prototype.slice.call(document.querySelectorAll(".page"));
+        var navLinks = Array.prototype.slice.call(document.querySelectorAll("#nav a"));
+        var ids = pages.map(function (p) {
+          return p.id;
+        });
+
+        function loadAssets(page) {
+          page.querySelectorAll("[data-src]").forEach(function (el) {
+            el.src = el.dataset.src;
+            el.removeAttribute("data-src");
+          });
+        }
+
+        function show(id, scroll) {
+          if (ids.indexOf(id) === -1) id = ids[0];
+
+          pages.forEach(function (page) {
+            var active = page.id === id;
+            page.hidden = !active;
+            if (active) {
+              loadAssets(page);
+              if (page.dataset.title) document.title = page.dataset.title;
+            }
+          });
+
+          navLinks.forEach(function (a) {
+            if (a.getAttribute("href") === "#" + id) {
+              a.setAttribute("aria-current", "page");
+            } else {
+              a.removeAttribute("aria-current");
+            }
+          });
+
+          if (scroll) window.scrollTo(0, 0);
+        }
+
+        function fromHash() {
+          return (location.hash || "").replace(/^#\/?/, "") || ids[0];
+        }
+
+        window.addEventListener("hashchange", function () {
+          show(fromHash(), true);
+        });
+
+        show(fromHash(), false);
+      })();
+    </script>
+  </body>
+</html>
